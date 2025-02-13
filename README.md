@@ -56,3 +56,5 @@ Deze repository gebruikt een gestructureerde branching-strategie om samenwerking
 | `feature/*`   | Branches voor nieuwe functionaliteiten. Worden uiteindelijk in `dev` gemerged. |
 | `bugfix/*`    | Branches voor bugfixes. Worden snel in `dev` en indien nodig in `main` gemerged. |
 | `hotfix/*`    | Spoedfixes voor kritieke bugs in `main`. Worden direct na fix terug gemerged. |
+
+Bij het maken van je commit vergeet niet een text te schrijven van wat het is + een titel
