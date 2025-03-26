@@ -1,15 +1,63 @@
-import React from 'react';
-import {Link} from 'expo-router';
-import {View, Text, StyleSheet, TextInput, Image, Button, Pressable} from 'react-native';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { Link, useRouter } from 'expo-router';
+import { View, Text, TextInput, Image, Button, Alert, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { create } from 'zustand';
 
 import { ThemedView } from '@/components/ThemedView';
-import InputField from '@/components/InputField'
 
+
+type AuthState = {
+  token: string | null;
+  setToken: (token: string) => void;
+}
+
+const useAuthStore = create<AuthState>((set) => ({
+  token: null,
+  setToken: (token) => set({ token })
+}));
 
 export default function Aanmelden() {
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [confirmPassword, setConfirmPassword] = useState('');
+      const router = useRouter();
+      const setToken = useAuthStore((state) => state.setToken);
+  
+  
+      const handleRegister = async () => {
+          if (!email || !password || !confirmPassword) {
+              Alert.alert("Foutmelding", "Je hebt nog niet alle velden ingevuld.");
+              return;
+          }
+
+          if (password !== confirmPassword) {
+            Alert.alert("Foutmelding", "Wachtwoorden komen niet over.");
+            return;
+          }
+        
+        try {
+          const response = await fetch('', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email, password, confirmPassword}),
+          });
+          
+          const data = await response.json();
+          setToken(data.token);
+          router.push('/(main)/dashboard');
+        } 
+
+        catch (error) {
+          Alert.alert("Fout", "Kon geen verbinding maken met de server");
+        }
+      };
+
+
     return(
-<SafeAreaProvider >
+      <SafeAreaProvider >
           <ThemedView style={styles.container}>
             <Image
             style={styles.logoImage}
@@ -19,18 +67,31 @@ export default function Aanmelden() {
             <Text style={styles.baseText}>Maak hier jouw account aan.</Text>
             
             <View>
-              <InputField
-              placeholder="Email"/>
-              <InputField
-              placeholder="Wachtwoord"
-              secureTextEntry={true}/>
-              <InputField
-              placeholder="Wachtwoord bevestigen"
-              secureTextEntry={true}/>
+                <TextInput 
+                    style={styles.inputField} 
+                    placeholder="Email" 
+                    value={email} 
+                    onChangeText={setEmail} 
+                />
+                <TextInput 
+                    style={styles.inputField} 
+                    placeholder="Wachtwoord" 
+                    value={password} 
+                    secureTextEntry={true} 
+                    onChangeText={setPassword}
+                />
+                <TextInput 
+                    style={styles.inputField} 
+                    placeholder="Wachtwoord bevestigen" 
+                    value={confirmPassword} 
+                    secureTextEntry={true} 
+                    onChangeText={setConfirmPassword}
+                />
             </View>
           
             <Button
             title="Inloggen"
+            onPress={handleRegister}
             />
 
             <Text style={[styles.linkText, styles.baseText]}>Al een account?
@@ -38,7 +99,7 @@ export default function Aanmelden() {
             </Text>
 
           </ThemedView>
-        </SafeAreaProvider>
+      </SafeAreaProvider>
     )
 }
 
@@ -70,4 +131,12 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     marginTop: 32,
   },
+  inputField: {
+    borderWidth: 3,
+    borderColor: '#4D4D4D',
+    borderRadius: 8,
+    padding: 14,
+    marginTop: 32,
+    color: '#fff'
+  }
 })

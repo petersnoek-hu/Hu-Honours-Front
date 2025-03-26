@@ -10,6 +10,7 @@ export default function Inloggen() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+
     const handlelogin = async () => {
         if (!email || !password) {
             Alert.alert("Fout", "Vul alle velden in");
@@ -28,8 +29,19 @@ export default function Inloggen() {
             <Text style={styles.baseText}>Log hier in met je account</Text>
             
             <View>
-                <TextInput style={styles.inputField} placeholder="Email" value={email} onChangeText={setEmail} />
-                <TextInput style={styles.inputField} placeholder="Wachtwoord" secureTextEntry={true} value={password} onChangeText={setPassword}/>
+                <TextInput 
+                    style={styles.inputField} 
+                    placeholder="Email" 
+                    value={email} 
+                    onChangeText={setEmail} 
+                />
+                <TextInput 
+                    style={styles.inputField} 
+                    placeholder="Wachtwoord" 
+                    value={password} 
+                    secureTextEntry={true} 
+                    onChangeText={setPassword}
+                />
             </View>
 
             <Button
