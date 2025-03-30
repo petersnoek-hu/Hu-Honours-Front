@@ -11,8 +11,8 @@ export default function Layout() {
   return (
     <>
       <Stack screenOptions={{headerShown:false}}>
-        <Stack.Screen name="inloggen" />
-        <Stack.Screen name="aanmelden" />
+        <Stack.Screen name="sign-in" />
+        <Stack.Screen name="sign-up" />
       </Stack>
       <StatusBar style="auto" />
     </>

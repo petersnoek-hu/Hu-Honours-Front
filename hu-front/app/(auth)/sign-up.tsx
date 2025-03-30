@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { create } from 'zustand';
 
 import { ThemedView } from '@/components/ThemedView';
+import InputField from '@/components/InputField' ;
 
 
 type AuthState = {
@@ -32,7 +33,7 @@ export default function Aanmelden() {
           }
 
           if (password !== confirmPassword) {
-            Alert.alert("Foutmelding", "Wachtwoorden komen niet over.");
+            Alert.alert("Foutmelding", "Één van de wachtwoorden klopt niet.");
             return;
           }
         
@@ -67,21 +68,18 @@ export default function Aanmelden() {
             <Text style={styles.baseText}>Maak hier jouw account aan.</Text>
             
             <View>
-                <TextInput 
-                    style={styles.inputField} 
+                <InputField
                     placeholder="Email" 
                     value={email} 
                     onChangeText={setEmail} 
                 />
-                <TextInput 
-                    style={styles.inputField} 
+                <InputField
                     placeholder="Wachtwoord" 
                     value={password} 
                     secureTextEntry={true} 
                     onChangeText={setPassword}
                 />
-                <TextInput 
-                    style={styles.inputField} 
+                <InputField
                     placeholder="Wachtwoord bevestigen" 
                     value={confirmPassword} 
                     secureTextEntry={true} 
@@ -90,8 +88,8 @@ export default function Aanmelden() {
             </View>
           
             <Button
-            title="Inloggen"
-            onPress={handleRegister}
+              title="Inloggen"
+              onPress={handleRegister}
             />
 
             <Text style={[styles.linkText, styles.baseText]}>Al een account?
@@ -131,12 +129,4 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     marginTop: 32,
   },
-  inputField: {
-    borderWidth: 3,
-    borderColor: '#4D4D4D',
-    borderRadius: 8,
-    padding: 14,
-    marginTop: 32,
-    color: '#fff'
-  }
 })
