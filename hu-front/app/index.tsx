@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import "../global.css";
 import { router } from "expo-router";
 
 const App = () => {
-
   return (
     <>
       <View>
