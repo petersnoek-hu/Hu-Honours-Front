@@ -1,9 +1,9 @@
 import React from "react";
-// import { Link, router } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
+import { UserHeader } from "../components/user/UserHeader";
 
 
-export default function Badges() {
+export default function User() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Username</Text>
