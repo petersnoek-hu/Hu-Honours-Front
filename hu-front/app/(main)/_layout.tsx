@@ -16,6 +16,8 @@ export default function Layout() {
     <>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="dashboard" />
+        <Stack.Screen name="user" />
+        <Stack.Screen name="allbadges" options={{ headerShown: true, title: "Alle Badges" }} />
       </Stack>
 
       <StatusBar style="auto" />
