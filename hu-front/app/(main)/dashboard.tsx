@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { SafeAreaView, Text, ScrollView } from "react-native";
+import Level from "@/components/Level";
 
 const Dashboard = () => {
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "center",
@@ -13,10 +14,16 @@ const Dashboard = () => {
         height: "100%",
       }}
     >
-      <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>
-        Dashboard
-      </Text>
-    </View>
+      <ScrollView>
+        <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>
+          Dashboard
+        </Text>
+
+        <Level />
+        <Level />
+        <Level />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
