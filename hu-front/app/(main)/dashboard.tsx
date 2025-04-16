@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, Text, ScrollView } from "react-native";
-import Level from "@/components/Level";
+import Level from "../../components/dashboard/Level";
 
 const Dashboard = () => {
   return (
@@ -19,8 +19,6 @@ const Dashboard = () => {
           Dashboard
         </Text>
 
-        <Level />
-        <Level />
         <Level />
       </ScrollView>
     </SafeAreaView>
