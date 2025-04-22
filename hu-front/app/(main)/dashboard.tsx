@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, Text, ScrollView } from "react-native";
 import Level from "../../components/dashboard/Level";
+import Popup from "../../components/dashboard/Level-Popup";
 
 const Dashboard = () => {
   return (
@@ -20,6 +21,7 @@ const Dashboard = () => {
         </Text>
 
         <Level />
+        <Popup/>
       </ScrollView>
     </SafeAreaView>
   );
