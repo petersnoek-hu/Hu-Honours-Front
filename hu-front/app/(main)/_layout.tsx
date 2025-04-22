@@ -1,10 +1,9 @@
-import { Stack } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 import { useEffect } from "react";
-import useAuthStore from "@/AuthStore";
-import { SafeAreaView } from "react-native";
+
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -14,9 +13,13 @@ export default function Layout() {
 
   return (
     <>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="dashboard" />
-      </Stack>
+      <Tabs 
+        screenOptions={{ 
+          headerShown: false,
+        }}>
+        
+        <Tabs.Screen name="dashboard" />
+      </Tabs>
 
       <StatusBar style="auto" />
     </>
