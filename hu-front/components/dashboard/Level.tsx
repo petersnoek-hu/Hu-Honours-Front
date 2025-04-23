@@ -9,7 +9,7 @@ export default function Level({level}: LevelProps){
     const [pressed, setPressed] = useState(false);
 
     return(
-        <View className="items-center border">
+        <View className="items-center">
             <Pressable 
                onPressIn={() => setPressed(true)}
                onPressOut={() => setPressed(false)}
