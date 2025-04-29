@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
 const Dashboard = () => {
   return (
@@ -16,6 +17,24 @@ const Dashboard = () => {
       <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>
         Dashboard
       </Text>
+      <Button
+        title="To Inleiding Level 1"
+        onPress={() => {
+          router.push("/levels/inleiding-level1");
+        }}
+      />
+      <Button
+        title="To Inleiding Level 2"
+        onPress={() => {
+          router.push("/levels/inleiding-level2");
+        }}
+      />
+      <Button
+        title="To level 4"
+        onPress={() => {
+          router.push("/levels/level4");
+        }}
+      />
     </View>
   );
 };
