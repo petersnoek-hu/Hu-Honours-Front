@@ -10,7 +10,6 @@ import Notifications from "../../components/svg/notifications";
 import User from "../../components/svg/user";
 
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
@@ -73,7 +72,6 @@ export default function Layout() {
         />
 
       </Tabs>
-
       <StatusBar style="auto" />
     </>
   );

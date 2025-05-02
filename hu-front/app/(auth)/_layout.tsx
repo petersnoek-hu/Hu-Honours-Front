@@ -1,16 +1,25 @@
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack, useRouter } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
+import "react-native-reanimated";
+import useAuthStore from "@/AuthStore";
 
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
+  const { token } = useAuthStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (token) {
+      router.replace("/(main)/dashboard");
+    }
+  });
+
   return (
     <>
-      <Stack screenOptions={{headerShown:false}}>
+      <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="sign-in" />
         <Stack.Screen name="sign-up" />
       </Stack>

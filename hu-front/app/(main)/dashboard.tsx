@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React from "react";
 import { SafeAreaView, Text, ScrollView, View } from "react-native";
 import Level from "../../components/dashboard/Level";
@@ -6,6 +7,8 @@ import Notification from "../../components/dashboard/Notificatiebalk";
 import Achievements from "../../components/dashboard/Achievementbalk";
 
 const Dashboard = () => {
+  const router = useRouter(); // Router gebruiken om te navigeren
+
   return (
     <SafeAreaView className="flex-1">
       <Achievements streak={5} badges={1}/>
