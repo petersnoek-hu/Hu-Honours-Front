@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import useAuthStore from "@/AuthStore";
 import { SafeAreaView } from "react-native";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
