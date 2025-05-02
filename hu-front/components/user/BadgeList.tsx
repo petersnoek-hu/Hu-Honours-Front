@@ -1,15 +1,15 @@
 import React from "react";
 import { View } from "react-native";
 import { BadgeCard } from "./BadgeCard";
-import BadgeGreen from "../../assets/badges/badge_green.svg";
-import BadgeBlue from "../../assets/badges/badge_blue.svg";
-import BadgeRed from "../../assets/badges/badge_red.svg";
 
 type BadgeListProps = {
   limit?: number;
 };
 
 export function BadgeList({ limit }: BadgeListProps) {
+  const BadgeBlue = require("../../assets/badges/badge_blue.png");
+  const BadgeGreen = require("../../assets/badges/badge_green.png");
+  const BadgeRed = require("../../assets/badges/badge_red.png");
   const badges = [
     { id: 1, icon: BadgeGreen },
     { id: 2, icon: BadgeBlue },
