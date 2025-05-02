@@ -6,6 +6,7 @@ import { SafeAreaView, View, Text } from "react-native";
 import { useRouter } from "expo-router";
 import Checklist from "@/components/ui/Checklist";
 import LottieView from "lottie-react-native";
+import FormBottomNavigation from "@/components/ui/FormBottomNavigation";
 
 const InleidingLevel1 = () => {
   const router = useRouter();
@@ -25,7 +26,7 @@ const InleidingLevel1 = () => {
   };
 
   const { step, isLastStep, isFirstStep, back, next } = useMultiStepForm([
-    <View key={0} className="flex-1">
+    <View key={0}>
       <Text className="text-white text-lg">
         Voordat je kunt groeien als leider, moet je jezelf leren begrijpen. Wat
         drijft jou? Hoe reageer je op de wereld om je heen? In deze eerste fase
@@ -34,7 +35,7 @@ const InleidingLevel1 = () => {
         bewust te kiezen hoe je denkt, voelt en handelt.
       </Text>
     </View>,
-    <View key={1} className="flex-1">
+    <View key={1}>
       <Text className="text-white text-3xl">Lees de volgende hoofdstukken</Text>
       <Checklist
         items={[
@@ -45,17 +46,18 @@ const InleidingLevel1 = () => {
         ]}
         onCheck={handleCheck}
         checkedItems={checkedItems}
-      ></Checklist>
+      />
     </View>,
-    <View key={3} className="flex-1 h-full justify-center items-center">
-      <View className="overflow-clip w-[250] h-[250] justify-center items-center">
+    <View key={3} className="justify-center items-center">
+      <View className="overflow-clip w-[300] h-[300] justify-center items-center">
         <LottieView
           source={animation}
           autoPlay={true}
           loop={true}
           resizeMode="contain"
           style={{
-            width: 600,
+            width: 250,
+            height: 250,
             aspectRatio: 1,
           }}
         />
@@ -73,34 +75,22 @@ const InleidingLevel1 = () => {
 
   return (
     <SafeAreaView className="flex-1 pt-[40] px-[20] bg-[#333333]">
-      <View className="flex-1 w-full bg-[#333333]">
+      <View className="w-full flex-1 bg-[#333333] relative">
         <LevelHeader
           levelName="Inleiding"
           levelDescription="Level 1: Eerste stappen"
           barProgression={0.1}
           handleBackPress={() => {
-            isFirstStep ? router.replace("/(main)/dashboard") : back();
+            router.replace("/(main)/dashboard");
           }}
         />
         {step}
-        <View className={`flex-row justify-end items-center my-5 w-full`}>
-          {isLastStep ? (
-            <CustomButton
-              title="Voltooien"
-              handlePress={() => {
-                router.replace("/(main)/dashboard");
-              }}
-              textStyles="text-white"
-              containerStyles="bg-blue w-full h-[40px] my-5 rounded-xl"
-            />
-          ) : (
-            <CustomButton
-              title="Volgende"
-              handlePress={next}
-              textStyles="text-white"
-              containerStyles="bg-blue w-1/2 h-[40px] my-5 rounded-xl"
-            />
-          )}
+        <View className="absolute bottom-0 left-0 right-0 flex-row w-full gap-x-4 py-5 bg-[#333333]">
+          <FormBottomNavigation
+            next={isLastStep ? () => router.replace("/(main)/dashboard") : next}
+            back={back}
+            isLastStep={isLastStep}
+          />
         </View>
       </View>
     </SafeAreaView>
