@@ -10,11 +10,11 @@ const Dashboard = () => {
     <SafeAreaView className="flex-1">
       <Achievements streak={5} badges={1}/>
       <Notification level={1}/>
-      <ScrollView className="flex-col-reverse p-4">\
-        <Level level={3}/>
-      <Divider challenge={1}/>
-        <Level level={2}/>
-        <Level level={1}/>
+      <ScrollView className="flex-col-reverse p-4">
+        <Level level={3} titel="Level 3"/>
+      <Divider challenge="Inleiding"/>
+        <Level level={2} titel="Jouw verhaal in beeld"/>
+        <Level level={1} titel="Eerste stappen"/>
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 
 type DividerProps = {
-    challenge: number;
+    challenge: number | string;
 }
 
 export default function Divider({challenge}: DividerProps){
