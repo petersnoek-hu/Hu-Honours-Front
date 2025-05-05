@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "expo-router";
 
 type LevelProps = {
-<<<<<<< HEAD
   level: number;
   titel: string;
 };
@@ -55,46 +54,4 @@ export default function Level({ level, titel }: LevelProps) {
       </View>
     </View>
   );
-=======
-    level: number;
-    titel: string;
-    handlePress: () => void;
-}
-
-export default function Level({level, titel, handlePress}: LevelProps){
-    const [pressed, setPressed] = useState(false);
-    const [showPopUp, setShowPopUp] = useState(false);
-
-    const handlePressLevel = () => {
-        setShowPopUp(prev => !prev)
-    };
-
-    return(
-        <View>
-            {showPopUp && (
-                <PopUp 
-                    level={level} 
-                    titel={titel}
-                    handlePress={handlePress}
-                />
-            )}
-
-        <View className="items-center">
-            <Pressable 
-               onPressIn={() => setPressed(true)}
-               onPressOut={() => setPressed(false)}
-               onPress={handlePressLevel}
-               className="w-24 h-24 bg-[#EE5B39] rounded-full justify-center items-center z-10"
-               style={{
-                transform: [{ translateY: pressed ? 8 : 0 }]
-              }}>
-                <Image source={require("../../assets/images/book.png")} className="w-16 h-16"/>
-            </Pressable>
-            <View className="w-24 h-24 bg-[#C33A1A] rounded-full absolute mt-2"/>
-
-            <Text className="color-white text-lg font-medium m-4">Level {level}</Text>
-        </View>
-        </View>
-    )
->>>>>>> 7571bbf4cc8e0ab7baffb95a86d5c54d34932740
 }
