@@ -5,26 +5,25 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { SafeAreaView, View, Text } from "react-native";
 
-const InleidingLevel2 = () => {
+const Level2 = () => {
   const router = useRouter();
   const [checkedItems, setCheckedItems] = useState([false, false, false]);
 
-  const { step, currentStepIndex, next, back, isLastStep, isFirstStep } =
-    useMultiStepForm([
-      <View className="flex-1">
-        <Text className="text-xl text-white mb-10">
-          Iedereen heeft een uniek verhaal. Jij ook. In deze opdracht ga je jouw
-          persoonlijke verhaal tot leven brengen — niet met lange teksten, maar
-          met beelden en jouw eigen stem.
-        </Text>
-        <Text className="text-3xl text-white my-3">Wat ga je doen?</Text>
-        <Text className="text-xl text-white">
-          Je maakt een korte presentatie bestaande uit vier foto’s. Elke foto
-          staat symbool voor een onderdeel van jouw verhaal. Je gebruikt geen
-          tekst in je slides — jij bent degene die het verhaal vertelt.
-        </Text>
-      </View>,
-    ]);
+  const { step, next, back, isLastStep, isFirstStep } = useMultiStepForm([
+    <View className="flex-1">
+      <Text className="text-xl text-white mb-10">
+        Iedereen heeft een uniek verhaal. Jij ook. In deze opdracht ga je jouw
+        persoonlijke verhaal tot leven brengen — niet met lange teksten, maar
+        met beelden en jouw eigen stem.
+      </Text>
+      <Text className="text-3xl text-white my-3">Wat ga je doen?</Text>
+      <Text className="text-xl text-white">
+        Je maakt een korte presentatie bestaande uit vier foto’s. Elke foto
+        staat symbool voor een onderdeel van jouw verhaal. Je gebruikt geen
+        tekst in je slides — jij bent degene die het verhaal vertelt.
+      </Text>
+    </View>,
+  ]);
 
   return (
     <SafeAreaView className="flex-1 pt-[40] px-[20] bg-[#333333]">
@@ -62,4 +61,4 @@ const InleidingLevel2 = () => {
   );
 };
 
-export default InleidingLevel2;
+export default Level2;

@@ -1,4 +1,3 @@
-import CustomButton from "@/components/ui/CustomButton";
 import LevelHeader from "@/components/ui/LevelHeader";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import React, { useState } from "react";
@@ -8,7 +7,7 @@ import Checklist from "@/components/ui/Checklist";
 import LottieView from "lottie-react-native";
 import FormBottomNavigation from "@/components/ui/FormBottomNavigation";
 
-const InleidingLevel1 = () => {
+const Level1 = () => {
   const router = useRouter();
   const [checkedItems, setCheckedItems] = useState<boolean[]>([
     false,
@@ -25,7 +24,7 @@ const InleidingLevel1 = () => {
     );
   };
 
-  const { step, isLastStep, isFirstStep, back, next } = useMultiStepForm([
+  const { step, isLastStep, back, next } = useMultiStepForm([
     <View key={0}>
       <Text className="text-white text-lg">
         Voordat je kunt groeien als leider, moet je jezelf leren begrijpen. Wat
@@ -97,4 +96,4 @@ const InleidingLevel1 = () => {
   );
 };
 
-export default InleidingLevel1;
+export default Level1;

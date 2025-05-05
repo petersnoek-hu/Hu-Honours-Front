@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { BadgeList } from "../../components/user/BadgeList";
 import { UserHeader } from "../../components/user/UserHeader";
-import { BottomNavigation } from "../../components/user/BottomNavigation";
 import { useNavigation } from "expo-router";
 import { NavigationProp } from "@react-navigation/native";
 
@@ -13,14 +12,12 @@ type UserProps = {
 
 export default function User({ username, streak }: UserProps) {
   const navigation = useNavigation<NavigationProp<{ allbadges: undefined }>>();
-  const [isExpanded, setIsExpanded] = useState(false); // State voor uitklappen/inklappen
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <View className="flex-1 bg-gray-900 pt-10">
-      {/* Header */}
       <UserHeader />
 
-      {/* Badges sectie */}
       <View className="flex-1 px-4">
         <View className="flex-row justify-between items-center mt-4">
           <Text className="text-white text-lg font-bold">Badges</Text>
@@ -31,7 +28,6 @@ export default function User({ username, streak }: UserProps) {
           </TouchableOpacity>
         </View>
 
-        {/* Badges container */}
         <View
           className="rounded-lg mt-4 p-4"
           style={{
@@ -40,9 +36,9 @@ export default function User({ username, streak }: UserProps) {
             borderRadius: 16,
           }}
         >
-          <BadgeList limit={isExpanded ? undefined : 3} /> {/* Toon alle of beperkte badges */}
+          <BadgeList limit={isExpanded ? undefined : 3} />
           <TouchableOpacity
-            onPress={() => setIsExpanded(!isExpanded)} // Toggle de uitklapbare state
+            onPress={() => setIsExpanded(!isExpanded)}
             style={{ marginTop: 8 }}
           >
             <Text className="text-white text-center font-bold">
@@ -51,9 +47,6 @@ export default function User({ username, streak }: UserProps) {
           </TouchableOpacity>
         </View>
       </View>
-
-      {/* Bottom Navigation */}
-      <BottomNavigation />
     </View>
   );
 }
