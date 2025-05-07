@@ -2,7 +2,7 @@ import LevelHeader from "@/components/ui/LevelHeader";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import LevelSvg from "@/components/svgs/LevelSvg";
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, Button, Image } from "react-native";
+import { SafeAreaView, View, Text } from "react-native";
 import { useRouter } from "expo-router";
 import LevelSvg2 from "@/components/svgs/LevelSvg2";
 import UploadFile from "@/components/svgs/UploadFileSvg";

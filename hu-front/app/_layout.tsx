@@ -1,6 +1,5 @@
 import "./../tailwind.css";
 import { Slot } from "expo-router";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
   ThemeProvider,
   DarkTheme,
@@ -12,10 +11,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <SafeAreaProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Slot />
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+      <Slot />
+    </ThemeProvider>
   );
 }

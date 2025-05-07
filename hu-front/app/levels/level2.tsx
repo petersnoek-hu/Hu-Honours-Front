@@ -1,7 +1,6 @@
 import UploadFile from "@/components/svgs/UploadFileSvg";
 import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
 import BulletList from "@/components/ui/BulletList";
-import CustomButton from "@/components/ui/CustomButton";
 import FormBottomNavigation from "@/components/ui/FormBottomNavigation";
 import LevelHeader from "@/components/ui/LevelHeader";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";

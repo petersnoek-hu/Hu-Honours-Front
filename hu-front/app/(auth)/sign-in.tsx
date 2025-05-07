@@ -8,8 +8,8 @@ import {
   Button,
   Alert,
   TextInput,
+  SafeAreaView,
 } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import axiosClient from "@/axiosClient";
 import useAuthStore from "@/AuthStore";
@@ -53,7 +53,7 @@ export default function Inloggen() {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView>
       <View style={styles.container}>
         <Image
           style={styles.logoImage}
@@ -85,7 +85,7 @@ export default function Inloggen() {
           <Link href="/(auth)/sign-up"> Aanmelden</Link>
         </Text>
       </View>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
 

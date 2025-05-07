@@ -7,14 +7,13 @@ import Map from "../../components/svg/map";
 import Chat from "../../components/svg/chat";
 import Notifications from "../../components/svg/notifications";
 import User from "../../components/svg/user";
-import { View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 bg-[#2B2B2B]">
       <Tabs
         screenOptions={{
           headerShown: false,

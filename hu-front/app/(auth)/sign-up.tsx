@@ -8,8 +8,8 @@ import {
   Button,
   Alert,
   StyleSheet,
+  SafeAreaView,
 } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import axiosClient from "@/axiosClient";
 
 import { ThemedView } from "@/components/ThemedView";
@@ -61,7 +61,7 @@ export default function Aanmelden() {
   };
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaView>
       <ThemedView style={styles.container}>
         <Image
           style={styles.logoImage}
@@ -97,7 +97,7 @@ export default function Aanmelden() {
           <Link href="/(auth)/sign-in"> Inloggen</Link>
         </Text>
       </ThemedView>
-    </SafeAreaProvider>
+    </SafeAreaView>
   );
 }
 
