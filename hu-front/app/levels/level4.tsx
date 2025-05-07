@@ -3,7 +3,6 @@ import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import LevelSvg from "@/components/svgs/LevelSvg";
 import React, { useState } from "react";
 import { SafeAreaView, View, Text, Button, Image } from "react-native";
-import CustomButton from "@/components/ui/CustomButton";
 import { useRouter } from "expo-router";
 import LevelSvg2 from "@/components/svgs/LevelSvg2";
 import UploadFile from "@/components/svgs/UploadFileSvg";
@@ -29,13 +28,11 @@ const Level4Screen = () => {
         key={0}
         className="bg-orange items-center rounded-3xl p-5 w-full gap-y-5 flex-col"
       >
-        {/* 1: Titel + subtitel */}
         <View className="w-full justify-center items-center">
           <Text className="color-white font-bold text-3xl">Level 4</Text>
           <Text className="color-white">Lees deze korte uitleg</Text>
         </View>
 
-        {/* 2: Eerste uitlegtekst */}
         <View className="w-full">
           <Text className="color-white w-1/2 text-lg">
             De cirkel van betrokkenheid bevat alles waar jij je mee bezighoudt,
@@ -43,7 +40,6 @@ const Level4Screen = () => {
           </Text>
         </View>
 
-        {/* 3: Afbeelding + tweede uitlegtekst */}
         <View className="flex-row justify-between w-full items-center">
           <LevelSvg />
           <Text className="color-white w-1/2 text-lg">
@@ -52,7 +48,6 @@ const Level4Screen = () => {
           </Text>
         </View>
 
-        {/* 4: Citaat */}
         <View className="w-full justify-center items-center">
           <Text className="color-white text-lg">
             “Succesvolle mensen focussen zich op hun cirkel van invloed en

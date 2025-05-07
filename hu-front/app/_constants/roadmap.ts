@@ -5,12 +5,12 @@ export type RoadmapItem =
 
 export const roadmap: RoadmapItem[] = [
   { type: "level", level: 1, titel: "Eerste stappen" },
-  { type: "level", level: 2, titel: "Jouw verhaal in beeld"},
+  { type: "level", level: 2, titel: "Jouw verhaal in beeld" },
 
   { type: "divider", challenge: "Inleiding" },
 
   { type: "level", level: 3, titel: "Level 3" },
-  { type: "level", level: 4, titel: "Level 4"},
+  { type: "level", level: 4, titel: "Level 4" },
   { type: "level", level: 5, titel: "Level 5" },
 
   { type: "divider", challenge: "Challenge 2" },

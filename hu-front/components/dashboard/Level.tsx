@@ -6,9 +6,11 @@ import { useRouter } from "expo-router";
 type LevelProps = {
   level: number;
   titel: string;
+  inset: string;
+  active: boolean;
 };
 
-export default function Level({ level, titel }: LevelProps) {
+export default function Level({ level, titel, inset, active }: LevelProps) {
   const [pressed, setPressed] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
 
@@ -31,12 +33,15 @@ export default function Level({ level, titel }: LevelProps) {
         />
       )}
 
-      <View className="items-center">
+      <View className={`items-center ${inset}`}>
         <Pressable
+          disabled={!active}
           onPressIn={() => setPressed(true)}
           onPressOut={() => setPressed(false)}
           onPress={handlePress}
-          className="w-24 h-24 bg-[#EE5B39] rounded-full justify-center items-center z-10"
+          className={`w-24 h-24 ${
+            active ? "bg-orange" : "bg-gray-400"
+          } rounded-full justify-center items-center z-10`}
           style={{
             transform: [{ translateY: pressed ? 8 : 0 }],
           }}
@@ -46,7 +51,11 @@ export default function Level({ level, titel }: LevelProps) {
             className="w-16 h-16"
           />
         </Pressable>
-        <View className="w-24 h-24 bg-[#C33A1A] rounded-full absolute mt-2" />
+        <View
+          className={`w-24 h-24 ${
+            active ? "bg-[#C33A1A]" : "bg-gray-700"
+          } rounded-full absolute mt-2`}
+        />
 
         <Text className="color-white text-lg font-medium m-4">
           Level {level}

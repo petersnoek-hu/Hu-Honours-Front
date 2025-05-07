@@ -8,12 +8,13 @@ import Chat from "../../components/svg/chat";
 import Notifications from "../../components/svg/notifications";
 import User from "../../components/svg/user";
 import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   return (
-    <>
+    <SafeAreaView>
       <Tabs
         screenOptions={{
           headerShown: false,
@@ -62,6 +63,6 @@ export default function Layout() {
         />
       </Tabs>
       <StatusBar style="auto" />
-    </>
+    </SafeAreaView>
   );
 }
