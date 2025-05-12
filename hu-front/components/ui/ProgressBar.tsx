@@ -13,7 +13,7 @@ const ProgressBar = ({
   progress,
   height = 20,
   color = "bg-blue-500",
-  backgroundColor = "bg-gray-300",
+  backgroundColor = "bg-gray-500",
   duration = 500,
 }: ProgressBarProps) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
@@ -33,7 +33,7 @@ const ProgressBar = ({
 
   return (
     <View className="py-4">
-      <View className="w-full rounded-full bg-[#D9D9D9]">
+      <View className="w-full rounded-full bg-gray-500">
         <Animated.View
           className={`h-[10] w-full`}
           style={{ width: widthInterpolated }}
