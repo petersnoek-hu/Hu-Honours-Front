@@ -9,6 +9,7 @@ type LevelHeaderProps = {
   levelDescription: string;
   barProgression: number;
   handleBackPress: () => void;
+  progressionColor?: string;
 };
 
 const LevelHeader = ({
@@ -16,6 +17,7 @@ const LevelHeader = ({
   levelDescription,
   barProgression,
   handleBackPress,
+  progressionColor = "bg-orange",
 }: LevelHeaderProps) => {
   return (
     <View className="px-4 pt-4 my-5">
@@ -36,7 +38,11 @@ const LevelHeader = ({
       </View>
 
       <View className="mt-2">
-        <ProgressBar duration={500} progress={barProgression} />
+        <ProgressBar
+          duration={500}
+          progress={barProgression}
+          color={progressionColor}
+        />
       </View>
     </View>
   );

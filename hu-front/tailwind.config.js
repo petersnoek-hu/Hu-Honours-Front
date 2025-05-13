@@ -8,6 +8,11 @@ module.exports = {
         primary: "#161622",
         blue: {
           DEFAULT: "#1A9FD9",
+          100: "	#D1ECF7",
+          200: "#A4D8ED",
+          300: "#1A9FD9",
+          400: "#0F7BBE",
+          500: "#0A6DA8",
         },
         orange: {
           DEFAULT: "#EE5B39",
