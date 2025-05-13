@@ -1,4 +1,3 @@
-import Divider from "@/components/dashboard/Divider";
 import UploadFile from "@/components/svgs/UploadFileSvg";
 import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
 import BulletList from "@/components/ui/BulletList";

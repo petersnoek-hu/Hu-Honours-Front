@@ -28,7 +28,7 @@ export default function Level({ level, titel, inset, active }: LevelProps) {
           titel={titel}
           onPress={() => {
             // @ts-ignore
-            router.push(`/levels/level${level}`);
+            router.push(`/levels/${level}`);
           }}
         />
       )}
