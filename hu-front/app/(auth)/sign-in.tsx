@@ -53,7 +53,7 @@ export default function Inloggen() {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <Image
           style={styles.logoImage}
