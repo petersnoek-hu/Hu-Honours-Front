@@ -122,6 +122,7 @@ const level5 = () => {
           levelName="Challenge 1"
           levelDescription="Level 5: Proactieve vs. reactive taal"
           barProgression={currentStepIndex / steps.length}
+          progressionColor="bg-orange"
           handleBackPress={() => {
             router.replace("/(main)/dashboard");
           }}
@@ -132,6 +133,7 @@ const level5 = () => {
             next={isLastStep ? () => router.replace("/(main)/dashboard") : next}
             back={back}
             isLastStep={isLastStep}
+            buttonColor="bg-orange"
           />
         </View>
       </View>

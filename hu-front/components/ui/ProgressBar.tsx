@@ -33,12 +33,12 @@ const ProgressBar = ({
 
   return (
     <View className="py-4">
-      <View className="w-full rounded-full bg-gray-500">
+      <View className={`w-full rounded-full ${backgroundColor}`}>
         <Animated.View
           className={`h-[10] w-full`}
           style={{ width: widthInterpolated }}
         >
-          <View className="h-full w-full rounded-full bg-blue" />
+          <View className={`h-full w-full rounded-full ${color}`}/>
         </Animated.View>
       </View>
     </View>
