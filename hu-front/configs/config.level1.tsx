@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { LevelConfig } from "@/types/level.types";
+import { LevelConfig, LevelFeatures } from "@/types/level.types";
 import Checklist from "@/components/ui/Checklist";
 import LottieView from "lottie-react-native";
 
@@ -17,21 +17,17 @@ const IntroductionStep = () => (
   </View>
 );
 
-const ChecklistStep = (
-  checkedItems: boolean[],
-  handleCheck: (index: number) => void
-) => (
+const ChecklistStep = ({
+  checklist,
+}: {
+  checklist: NonNullable<LevelFeatures["checklist"]>;
+}) => (
   <View>
     <Text className="text-white text-3xl">Lees de volgende hoofdstukken</Text>
     <Checklist
-      items={[
-        "Paradigma's en principes",
-        "Van binnen naar buiten",
-        "De 7 eigenschappen - een overzicht",
-        "Samenvatting",
-      ]}
-      onCheck={handleCheck}
-      checkedItems={checkedItems}
+      items={checklist.items}
+      onCheck={checklist.handleCheck}
+      checkedItems={checklist.checkedItems}
       checkedColor="bg-orange"
     />
   </View>
@@ -64,19 +60,27 @@ const CompletionStep = () => (
 );
 
 export default function level1Config(
-  checkedItems: boolean[],
-  handleCheck: (index: number) => void
+  features?: Partial<LevelFeatures>
 ): LevelConfig {
-  return {
-    levelName: "Inleiding",
-    levelDescription: "Level 1: Eerste stappen",
-    color: "bg-orange",
-    checklistItems: [
+  // Ensure checklist features are provided with default values
+  const checklistFeature = {
+    items: [
       "Paradigma's en principes",
       "Van binnen naar buiten",
       "De 7 eigenschappen - een overzicht",
       "Samenvatting",
     ],
+    checkedItems: features?.checklist?.checkedItems || [],
+    handleCheck: features?.checklist?.handleCheck || (() => {}),
+  };
+
+  return {
+    levelName: "Inleiding",
+    levelDescription: "Level 1: Eerste stappen",
+    color: "bg-orange",
+    features: {
+      checklist: checklistFeature,
+    },
     steps: [
       {
         id: 1,
@@ -84,7 +88,7 @@ export default function level1Config(
       },
       {
         id: 2,
-        component: ChecklistStep(checkedItems, handleCheck),
+        component: <ChecklistStep checklist={checklistFeature} />,
       },
       {
         id: 3,

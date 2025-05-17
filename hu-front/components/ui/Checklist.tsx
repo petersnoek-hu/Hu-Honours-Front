@@ -29,7 +29,9 @@ const Checklist = ({
               className={`w-[30] h-[30] rounded-full ${
                 checkedItems[index] ? checkedColor : "bg-white"
               }`}
-              onPress={() => onCheck(index)}
+              onPress={() => {
+                onCheck(index);
+              }}
             />
           </View>
         </View>

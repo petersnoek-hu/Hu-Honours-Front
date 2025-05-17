@@ -22,7 +22,7 @@ const BaseLevel = ({ config }: BaseLevelProps) => {
           levelName={config.levelName}
           levelDescription={config.levelDescription}
           barProgression={currentStepIndex / steps.length}
-          handleBackPress={back}
+          handleBackPress={() => router.replace("/(main)/dashboard")}
           progressionColor={config.color}
         />
         {step}
