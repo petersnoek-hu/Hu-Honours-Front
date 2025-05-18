@@ -1,7 +1,9 @@
+import React from "react";
 import { View, Text } from "react-native";
-import { LevelConfig, LevelFeatures } from "@/types/level.types";
+import { LevelFeatures } from "@/types/level.types";
 import Checklist from "@/components/ui/Checklist";
 import LottieView from "lottie-react-native";
+import { createLevel } from "./createLevel";
 
 const animation = require("../assets/lottie/badge-animation.json");
 
@@ -17,20 +19,29 @@ const IntroductionStep = () => (
   </View>
 );
 
-const ChecklistStep = ({
-  checklist,
-}: {
-  checklist: NonNullable<LevelFeatures["checklist"]>;
-}) => (
-  <View>
-    <Text className="text-white text-3xl">Lees de volgende hoofdstukken</Text>
-    <Checklist
-      items={checklist.items}
-      onCheck={checklist.handleCheck}
-      checkedItems={checklist.checkedItems}
-      checkedColor="bg-orange"
-    />
-  </View>
+const ChecklistStep = React.memo(
+  ({ features }: { features: Partial<LevelFeatures> }) => (
+    <View>
+      <Text className="text-white text-3xl">Lees de volgende hoofdstukken</Text>
+      <Checklist
+        items={[
+          "Paradigma's en principes",
+          "Van binnen naar buiten",
+          "De 7 eigenschappen - een overzicht",
+          "Samenvatting",
+        ]}
+        onCheck={features.checklist?.handleCheck ?? (() => {})}
+        checkedItems={features.checklist?.checkedItems ?? []}
+        checkedColor="bg-orange"
+      />
+    </View>
+  ),
+  (prevProps, nextProps) => {
+    return (
+      prevProps.features.checklist?.checkedItems ===
+      nextProps.features.checklist?.checkedItems
+    );
+  }
 );
 
 const CompletionStep = () => (
@@ -59,41 +70,37 @@ const CompletionStep = () => (
   </View>
 );
 
-export default function level1Config(
-  features?: Partial<LevelFeatures>
-): LevelConfig {
-  // Ensure checklist features are provided with default values
-  const checklistFeature = {
+const level1Base = {
+  levelName: "Inleiding",
+  levelDescription: "Level 1: Eerste stappen",
+  color: "bg-orange",
+  steps: [
+    {
+      id: 1,
+      component: <IntroductionStep />,
+    },
+    {
+      id: 2,
+      component: (features: Partial<LevelFeatures>) => (
+        <ChecklistStep features={features} />
+      ),
+    },
+    {
+      id: 3,
+      component: <CompletionStep />,
+    },
+  ],
+};
+
+export default createLevel(level1Base, (features) => ({
+  checklist: {
     items: [
       "Paradigma's en principes",
       "Van binnen naar buiten",
       "De 7 eigenschappen - een overzicht",
       "Samenvatting",
     ],
-    checkedItems: features?.checklist?.checkedItems || [],
-    handleCheck: features?.checklist?.handleCheck || (() => {}),
-  };
-
-  return {
-    levelName: "Inleiding",
-    levelDescription: "Level 1: Eerste stappen",
-    color: "bg-orange",
-    features: {
-      checklist: checklistFeature,
-    },
-    steps: [
-      {
-        id: 1,
-        component: <IntroductionStep />,
-      },
-      {
-        id: 2,
-        component: <ChecklistStep checklist={checklistFeature} />,
-      },
-      {
-        id: 3,
-        component: <CompletionStep />,
-      },
-    ],
-  };
-}
+    checkedItems: features.checklist?.checkedItems ?? [],
+    handleCheck: features.checklist?.handleCheck ?? (() => {}),
+  },
+}));

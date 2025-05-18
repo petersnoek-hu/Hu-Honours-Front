@@ -1,5 +1,5 @@
-import React from "react";
-import { LevelConfig } from "@/types/level.types";
+import React, { useMemo, useCallback } from "react";
+import { LevelConfig, LevelFeatures, LevelStep } from "@/types/level.types";
 import { useRouter } from "expo-router";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import { SafeAreaView, View } from "react-native";
@@ -13,8 +13,30 @@ interface BaseLevelProps {
 
 const BaseLevel = ({ config }: BaseLevelProps) => {
   const router = useRouter();
+
+  // Memoize features to maintain stable reference
+  const features = useMemo(() => config.features || {}, [config.features]);
+
+  // Create stable transform function with proper typing
+  const transformStep = useCallback(
+    (step: LevelStep) => {
+      if (typeof step.component === "function") {
+        return step.component(features);
+      }
+      return step.component;
+    },
+    [features]
+  );
+
+  // Transform steps with stable function
+  const transformedSteps = useMemo(
+    () => config.steps.map(transformStep),
+    [config.steps, transformStep]
+  );
+
   const { steps, step, currentStepIndex, next, back, isLastStep } =
-    useMultiStepForm(config.steps.map((step) => step.component));
+    useMultiStepForm(transformedSteps);
+
   return (
     <SafeAreaView className="flex-1 pt-[40] px-[20] bg-[#333333]">
       <View className="w-full flex-1 bg-[#333333]">

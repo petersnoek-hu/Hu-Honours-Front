@@ -1,6 +1,6 @@
 export interface LevelStep {
   id: number;
-  component: React.ReactElement;
+  component: React.ReactElement | ((features: Partial<LevelFeatures>) => React.ReactElement);
 }
 
 export interface LevelFeatures {
