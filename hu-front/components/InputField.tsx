@@ -1,3 +1,4 @@
+import React from "react";
 import { TextInput, View } from 'react-native';
 
 type InputFieldProps = {
@@ -10,12 +11,12 @@ type InputFieldProps = {
 export default function InputField({placeholder, value, secureTextEntry, onChangeText}:InputFieldProps){
     return(
         <View>
-            <TextInput className="border-2 border-gray-600 rounded-lg p-4 color-gray-100 font-medium"
+            <TextInput className="border-2 border-gray-600 rounded-lg px-[16px] py-[12px] color-gray-100 font-medium"
              placeholder={placeholder}
              value={value}
              secureTextEntry={secureTextEntry}
              onChangeText={onChangeText}
-             placeholderTextColor="#F6F6F6"
+             placeholderTextColor="#B1B2B5"
             />
         </View>
     )
