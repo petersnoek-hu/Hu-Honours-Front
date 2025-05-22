@@ -4,12 +4,12 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
   Image,
-  Button,
   Alert,
-  TextInput,
   SafeAreaView,
 } from "react-native";
+import InputField from "@/components/InputField";
 
 import axiosClient from "@/axiosClient";
 import useAuthStore from "@/AuthStore";
@@ -53,24 +53,21 @@ export default function Inloggen() {
   };
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Image
-          style={styles.logoImage}
+    <SafeAreaView className="flex-1 bg-gray-900">
+      <View className="flex-1 px-[24px] py-[70px]">
+        <Image className="w-full h-[118px] justify-center"
           source={require("@/assets/images/hu-honours-logo.png")}
         />
-        <Text style={styles.headerText}>Inloggen</Text>
-        <Text style={styles.baseText}>Log hier in met je account</Text>
+        <Text className="text-4xl font-bold color-gray-100 mt-16 mb-2">Inloggen</Text>
+        <Text className="text-lg font-medium color-gray-100">Log hier in met je account</Text>
 
-        <View>
-          <TextInput
-            style={styles.inputField}
+        <View className="mb-24">
+          <InputField
             placeholder="Email"
             value={email}
             onChangeText={setEmail}
           />
-          <TextInput
-            style={styles.inputField}
+          <InputField
             placeholder="Wachtwoord"
             value={password}
             secureTextEntry={true}
@@ -78,54 +75,16 @@ export default function Inloggen() {
           />
         </View>
 
-        <Button onPress={handlelogin} title="Inloggen" />
+        <TouchableOpacity className="p-4 bg-blue rounded-lg items-center" onPress={handlelogin}>
+          <Text className="text-lg color-gray-100 font-bold">Inloggen</Text>
+          </TouchableOpacity>
 
-        <Text style={[styles.linkText, styles.baseText]}>
-          Nog geen account?
-          <Link href="/(auth)/sign-up"> Aanmelden</Link>
+        <Text className="text-lg font-medium color-gray-100 mt-8 text-center">
+          Nog geen account? 
+          <Link className="underline" href="/(auth)/sign-up"> Aanmelden</Link>
         </Text>
       </View>
     </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 47,
-    paddingHorizontal: 24,
-  },
-  logoImage: {
-    width: "100%",
-    height: 118,
-    justifyContent: "center",
-  },
-  headerText: {
-    fontSize: 32,
-    fontWeight: 700,
-    color: "#F6F6F6",
-    marginTop: 32,
-    marginBottom: 8,
-  },
-  baseText: {
-    fontSize: 16,
-    fontWeight: 500,
-    color: "#F6F6F6",
-  },
-  linkText: {
-    textAlign: "center",
-    borderWidth: 2,
-    marginTop: 32,
-  },
-  button: {
-    borderRadius: 8,
-  },
-  inputField: {
-    borderWidth: 3,
-    borderColor: "#4D4D4D",
-    borderRadius: 8,
-    padding: 14,
-    marginTop: 32,
-    color: "#fff",
-  },
-});
