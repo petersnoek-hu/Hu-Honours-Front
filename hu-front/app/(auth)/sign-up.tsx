@@ -58,7 +58,7 @@ export default function Aanmelden() {
   };
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 bg-gray-900">
       <View className="flex-1 px-[24px] py-[70px]">
         <Image className="w-full h-[118px] justify-center"
           source={require("@/assets/images/hu-honours-logo.png")}
