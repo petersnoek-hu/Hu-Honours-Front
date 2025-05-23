@@ -59,8 +59,8 @@ export default function Aanmelden() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-900">
-      <View className="flex-1 px-[24px] py-[70px]">
-        <Image className="w-full h-[118px] justify-center"
+      <View className="flex-1 px-6 py-18">
+        <Image className="w-full h-30 justify-center"
           source={require("@/assets/images/hu-honours-logo.png")}
         />
         <Text className="text-4xl font-bold color-gray-100 mt-16 mb-2">Aanmelden</Text>
