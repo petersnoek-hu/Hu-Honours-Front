@@ -13,7 +13,7 @@ const ProgressBar = ({
   progress,
   height = 20,
   color = "bg-blue-500",
-  backgroundColor = "bg-[#D9D9D9]",
+  backgroundColor = "bg-gray-500",
   duration = 500,
 }: ProgressBarProps) => {
   const animatedValue = useRef(new Animated.Value(0)).current;

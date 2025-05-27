@@ -22,7 +22,7 @@ const Dashboard = () => {
       >
         {roadmap.map((item, index) => {
           if (item.type === "level") {
-            const isActive = index < 3 || index === 4;
+            const isActive = index < 3 || index === 4 || index === 5 ;
             return (
               <Level
                 key={index}

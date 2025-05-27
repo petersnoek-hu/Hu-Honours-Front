@@ -9,36 +9,38 @@ export const roadmap: RoadmapItem[] = [
 
   { type: "divider", challenge: "Inleiding" },
 
-  { type: "level", level: 3, titel: "Level 3" },
-  { type: "level", level: 4, titel: "Level 4" },
-  { type: "level", level: 5, titel: "Level 5" },
+  { type: "level", level: 3, titel: "Wees proactief" },
+  { type: "level", level: 4, titel: "Cirkel van betrokkenheid en cirkel van invloed" },
+  { type: "level", level: 5, titel: "Proactieve vs. reactive taal" },  
+  { type: "level", level: 6, titel: "Vergroten van betrokkenheid en invloed" },
 
   { type: "divider", challenge: "Challenge 2" },
 
-  { type: "level", level: 6, titel: "Level 6" },
-  { type: "level", level: 7, titel: "Level 7" },
-  { type: "level", level: 8, titel: "Level 8" },
+  { type: "level", level: 7, titel: "Ik ga op reis en neem mee" },
+  { type: "level", level: 8, titel: "Betekenisvolle ontmoetingen" },  
+  { type: "level", level: 9, titel: "Persoonlijke missie" },
 
   { type: "divider", challenge: "Challenge 3" },
 
-  { type: "level", level: 9, titel: "Level 9" },
-  { type: "level", level: 10, titel: "Level 10" },
+  { type: "level", level: 10, titel: "De vier dimensies" },  
+  { type: "level", level: 11, titel: "Kritisch incident" },
 
-  { type: "divider", challenge: "Afsluiting" },
+  { type: "divider", challenge: "Challenge 4" },
 
-  { type: "level", level: 11, titel: "Level 11" },
-  { type: "level", level: 12, titel: "Level 12" },
-  { type: "level", level: 13, titel: "Level 13" },
-  { type: "level", level: 14, titel: "Level 14" },
+  { type: "level", level: 12, titel: "Empathische communicatie" },
 
-  { type: "divider", challenge: "Bonus Levels" },
+  { type: "divider", challenge: "Challenge 5" },
 
-  { type: "level", level: 15, titel: "Level 15" },
-  { type: "level", level: 16, titel: "Level 16" },
+  { type: "level", level: 13, titel: "De stappen in geweldloze communicatie" },
+  { type: "level", level: 14, titel: "Win/win" },
 
-  { type: "divider", challenge: "Expert Track" },
+  { type: "divider", challenge: "Challenge 6" },
 
-  { type: "level", level: 18, titel: "Level 18" },
-  { type: "level", level: 19, titel: "Level 19" },
-  { type: "level", level: 20, titel: "Level 20" },
+  { type: "level", level: 15, titel: "Werk synergetisch" },
+
+  { type: "divider", challenge: "Challenge 7" },
+
+  { type: "level", level: 16, titel: "Jij en de dimensies" },
+    { type: "level", level: 17, titel: "Losse eindjes" },
+  { type: "level", level: 18, titel: "Jouw persoonlijke masterplan" },
 ];

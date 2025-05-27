@@ -20,7 +20,7 @@ const LevelHeader = ({
   progressionColor = "bg-orange",
 }: LevelHeaderProps) => {
   return (
-    <View className="px-4 pt-4 my-5">
+    <View className="pt-4 my-5">
       <View className="flex-row items-center justify-between">
         <IconButton
           icon={require("../../assets/images/arrow-left.png")}
@@ -29,10 +29,10 @@ const LevelHeader = ({
           handlePress={handleBackPress}
         />
         <View className="flex-1 items-center -ml-6">
-          <Text className="text-white font-psemibold text-2xl">
+          <Text className="color-gray-100 font-bold text-4xl">
             {levelName}
           </Text>
-          <Text className="text-white text-sm">{levelDescription}</Text>
+          <Text className="color-gray-300 font-medium text-base">{levelDescription}</Text>
         </View>
         <View style={{ width: 24 }} />
       </View>
