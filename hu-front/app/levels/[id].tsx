@@ -1,19 +1,20 @@
 import BaseLevel from "@/components/BaseLevel";
 import { Stack, useLocalSearchParams } from "expo-router";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useCallback, useState } from "react";
 import { levelConfigs } from "@/configs/level-configs";
 
 export default function Page() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const levelConfig = levelConfigs[Number(id)];
-
   const [inputFields, setInputFields] = useState<ReactElement[]>([]);
   const [inputValues, setInputValues] = useState<string[]>([]);
   const [checkedItems, setCheckedItems] = useState<boolean[]>([]);
 
-  if (!levelConfig) {
-    return null;
-  }
+  const handleSetFields = useCallback((newFields: ReactElement[]) => {
+    setInputFields(newFields);
+  }, []);
+
+  if (!levelConfig) return null;
 
   const handleCheck = (index: number) => {
     setCheckedItems((prev) =>

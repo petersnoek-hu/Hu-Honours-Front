@@ -1,7 +1,7 @@
 // Defenitie van de structuur van een level stap
 export interface LevelStep {
   id: number;
-  component: React.ReactElement;
+  component: React.ReactElement | ((features: Partial<LevelFeatures>) => React.ReactElement);
 }
 
 // Defenitie van features die door een level gebruikt kunnen worden

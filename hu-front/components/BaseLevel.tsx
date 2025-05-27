@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { LevelConfig } from "@/types/level.types";
+import { useState } from "react";
+import { LevelConfig, LevelStep } from "@/types/level.types";
+import React, { useMemo, useCallback } from "react";
 import { useRouter } from "expo-router";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import {
@@ -21,8 +22,29 @@ interface BaseLevelProps {
 
 const BaseLevel = ({ config }: BaseLevelProps) => {
   const router = useRouter();
+
+  // Memoize features to maintain stable reference
+  const features = useMemo(() => config.features || {}, [config.features]);
+
+  // Create stable transform function with proper typing
+  const transformStep = useCallback(
+    (step: LevelStep) => {
+      if (typeof step.component === "function") {
+        return step.component(features);
+      }
+      return step.component;
+    },
+    [features]
+  );
+
+  // Transform steps with stable function
+  const transformedSteps = useMemo(
+    () => config.steps.map(transformStep),
+    [config.steps, transformStep]
+  );
+
   const { steps, step, currentStepIndex, next, back, isLastStep } =
-    useMultiStepForm(config.steps.map((step) => step.component));
+    useMultiStepForm(transformedSteps);
 
   const BOTTOM_NAV_HEIGHT = 100;
 

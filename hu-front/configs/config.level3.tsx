@@ -5,6 +5,7 @@ import LottieView from "lottie-react-native";
 import LevelHero from "@/components/ui/LevelHero";
 import IconButton from "@/components/ui/IconButton";
 import InputField from "@/components/InputField";
+import { createLevel } from "./createLevel";
 
 const animation = require("../assets/lottie/badge-animation.json");
 

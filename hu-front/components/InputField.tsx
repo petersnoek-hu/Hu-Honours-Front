@@ -1,7 +1,8 @@
+import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
 type InputFieldProps = {
-  placeholder: string;
+  placeholder?: string;
   value: string;
   secureTextEntry?: boolean;
   fullHeight?: boolean;
@@ -9,7 +10,7 @@ type InputFieldProps = {
 };
 
 const InputField = ({
-  placeholder,
+  placeholder = "Enter text...",
   value,
   secureTextEntry,
   fullHeight = false,
@@ -21,9 +22,9 @@ const InputField = ({
         className="border-2 border-[#4D4D4D] rounded-lg p-4 h-full text-white"
         placeholder={placeholder}
         value={value}
+        onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         placeholderTextColor="#E4E4E4"
-        onChangeText={onChangeText}
         multiline={fullHeight}
         textAlignVertical={fullHeight ? "top" : "center"}
         numberOfLines={fullHeight ? 10 : 1}
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     borderColor: "#4D4D4D",
     borderRadius: 8,
     padding: 14,
-    marginTop: 32,
+    marginTop: 16,
     color: "#fff",
   },
 });
