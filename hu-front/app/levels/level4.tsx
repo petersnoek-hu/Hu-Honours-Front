@@ -10,6 +10,7 @@ import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
 import LottieView from "lottie-react-native";
 import Checklist from "@/components/ui/Checklist";
 import FormBottomNavigation from "@/components/ui/FormBottomNavigation";
+import { StatusBar } from "expo-status-bar";
 
 const Level4Screen = () => {
   const router = useRouter();
@@ -129,6 +130,7 @@ const Level4Screen = () => {
           />
         </View>
       </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };

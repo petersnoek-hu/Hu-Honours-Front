@@ -43,6 +43,11 @@ module.exports = {
         },
         blue: {
           DEFAULT: "#1A9FD9",
+          100: "	#D1ECF7",
+          200: "#A4D8ED",
+          300: "#1A9FD9",
+          400: "#0F7BBE",
+          500: "#0A6DA8",
         },
         orange: {
           50: "#FDECE8",
@@ -70,6 +75,9 @@ module.exports = {
         },
         green: {
           DEFAULT: "#6CCB2A",
+        gray: {
+          100: "#F6F6F6",
+          900: "#333333",
         },
       },
       fontFamily: {

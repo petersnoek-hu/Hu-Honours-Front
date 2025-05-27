@@ -1,3 +1,4 @@
+import Divider from "@/components/dashboard/Divider";
 import UploadFile from "@/components/svgs/UploadFileSvg";
 import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
 import BulletList from "@/components/ui/BulletList";
@@ -5,6 +6,7 @@ import FormBottomNavigation from "@/components/ui/FormBottomNavigation";
 import LevelHeader from "@/components/ui/LevelHeader";
 import { useMultiStepForm } from "@/hooks/useMultistepForm";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import LottieView from "lottie-react-native";
 import React, { useState } from "react";
 import { SafeAreaView, View, Text } from "react-native";
@@ -37,17 +39,37 @@ const Level2 = () => {
     <View className="flex-1">
       <Text className="text-3xl text-white my-3">Binnen je presentatie</Text>
       <BulletList items={bulletListItems}></BulletList>
-      <Text className="text-white my-3">1. Wie ben jij?</Text>
-      <Text className="text-white my-3">
-        2. Welke dieptepunten hebben jou gevormd?
+      <Text className="text-white my-2">Wie ben jij?</Text>
+      <Text className="text-white my-2">
+        Welke hoogtepunten hebben jou gevormd
       </Text>
-      <Text className="text-white my-3">
-        3. Welke hoogtepunten hebben jou gevormd?
+      <Text className="text-white my-2">
+        Welke dieptepunten hebben jou gevormd?
       </Text>
-      <Text className="text-white my-3">
-        4. Waarvoor wil je deze cursus gebruiken of waarin wil jij je
-        ontwikkelen?
+      <Text className="text-white my-2">
+        Waar wil je deze cursus voor gebruiken of waarin wil jij je ontwikkelen?
       </Text>
+      {/* <View className="gap-y-5">
+        <View className="bg-blue px-5 rounded-xl">
+          <Text className="text-white text-lg my-3">Wie ben jij?</Text>
+        </View>
+        <View className="bg-blue px-5 rounded-xl">
+          <Text className="text-white text-lg my-3">
+            Welke dieptepunten hebben jou gevormd?
+          </Text>
+        </View>
+        <View className="bg-blue px-5 rounded-xl">
+          <Text className="text-white text-lg my-3">
+            Welke hoogtepunten hebben jou gevormd?
+          </Text>
+        </View>
+        <View className="bg-blue px-5 rounded-xl">
+          <Text className="text-white text-lg my-3">
+            Waarvoor wil je deze cursus gebruiken of waarin wil jij je
+            ontwikkelen?
+          </Text>
+        </View>
+      </View> */}
     </View>,
     <View>
       <View key={2} className="flex-1">
@@ -101,6 +123,7 @@ const Level2 = () => {
           }}
           levelName="Inleiding"
           levelDescription="Level 2: jouw verhaal in beeld"
+          progressionColor="bg-blue"
         />
         {step}
       </View>
@@ -109,8 +132,10 @@ const Level2 = () => {
           next={isLastStep ? () => router.replace("/(main)/dashboard") : next}
           back={back}
           isLastStep={isLastStep}
+          buttonColor="bg-blue"
         />
       </View>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 };

@@ -3,16 +3,13 @@ import { Link, useRouter } from "expo-router";
 import {
   View,
   Text,
-  TextInput,
   Image,
-  Button,
+  TouchableOpacity,
   Alert,
-  StyleSheet,
   SafeAreaView,
 } from "react-native";
 import axiosClient from "@/axiosClient";
 
-import { ThemedView } from "@/components/ThemedView";
 import InputField from "@/components/InputField";
 import useAuthStore from "@/AuthStore";
 import axios from "axios";
@@ -61,14 +58,13 @@ export default function Aanmelden() {
   };
 
   return (
-    <SafeAreaView>
-      <ThemedView style={styles.container}>
-        <Image
-          style={styles.logoImage}
+    <SafeAreaView className="flex-1 bg-gray-900">
+      <View className="flex-1 px-6 py-18">
+        <Image className="w-full h-30 justify-center"
           source={require("@/assets/images/hu-honours-logo.png")}
         />
-        <Text style={styles.headerText}>Aanmelden</Text>
-        <Text style={styles.baseText}>Maak hier jouw account aan.</Text>
+        <Text className="text-4xl font-bold color-gray-100 mt-16 mb-2">Aanmelden</Text>
+        <Text className="text-lg font-medium color-gray-100">Maak hier jouw account aan.</Text>
 
         <View>
           <InputField
@@ -90,43 +86,15 @@ export default function Aanmelden() {
           />
         </View>
 
-        <Button title="Inloggen" onPress={handleRegister} />
+        <TouchableOpacity className="p-4 bg-blue rounded-lg items-center" onPress={handleRegister}>
+          <Text className="text-lg color-gray-100 font-bold">Aanmelden</Text>
+        </TouchableOpacity>
 
-        <Text style={[styles.linkText, styles.baseText]}>
-          Al een account?
-          <Link href="/(auth)/sign-in"> Inloggen</Link>
+        <Text className="text-lg font-medium color-gray-100 mt-8 text-center">
+          Al een account? 
+          <Link className="underline" href="/(auth)/sign-in"> Inloggen</Link>
         </Text>
-      </ThemedView>
+      </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 47,
-    paddingHorizontal: 24,
-  },
-  logoImage: {
-    width: "100%",
-    height: 118,
-    justifyContent: "center",
-  },
-  headerText: {
-    fontSize: 32,
-    fontWeight: 700,
-    color: "#F6F6F6",
-    marginTop: 32,
-    marginBottom: 8,
-  },
-  baseText: {
-    fontSize: 16,
-    fontWeight: 500,
-    color: "#F6F6F6",
-  },
-  linkText: {
-    textAlign: "center",
-    borderWidth: 2,
-    marginTop: 32,
-  },
-});
