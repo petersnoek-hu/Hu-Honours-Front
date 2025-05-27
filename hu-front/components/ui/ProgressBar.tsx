@@ -32,7 +32,7 @@ const ProgressBar = ({
   });
 
   return (
-    <View className="py-4">
+    <View className="py-2">
       <View className={`w-full rounded-full ${backgroundColor}`}>
         <Animated.View
           className={`h-[10] w-full`}

@@ -11,19 +11,28 @@ type Props = {
 
 const FormBottomNavigation = ({ back, next, isLastStep, buttonColor }: Props) => {
   return (
-    <View className="flex-row w-full gap-x-4 py-5">
-      <CustomButton
-        title="Vorige"
-        handlePress={back}
-        textStyles="text-white"
-        containerStyles={`${buttonColor} flex-1 h-[40px] rounded-xl`}
-      />
-      <CustomButton
-        title={isLastStep ? "Voltooien" : "Volgende"}
-        handlePress={next}
-        textStyles="text-white"
-        containerStyles={`${buttonColor} flex-1 h-[40px] rounded-xl`}
-      />
+    <View className="w-full py-5">
+      <View className="flex-row w-full gap-x-4">
+        <View className="flex-1">
+          <CustomButton
+            title="Vorige"
+            handlePress={back}
+            textStyles="text-white"
+            containerStyles="h-[40px] rounded-xl bg-transparent border-2 border-[#F6F6F6] w-3/4"
+          />
+        </View>
+
+        <View className="flex-1">
+          <CustomButton
+            title={isLastStep ? "Voltooien" : "Volgende"}
+            handlePress={next}
+            textStyles="text-black"
+            containerStyles="h-[40px] rounded-xl"
+            backgroundColor={buttonColor}
+            shadow={true}
+          />
+        </View>
+      </View>
     </View>
   );
 };

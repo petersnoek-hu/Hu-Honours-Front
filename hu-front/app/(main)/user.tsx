@@ -12,7 +12,7 @@ type UserProps = {
 
 export default function User({ username, streak }: UserProps) {
   const navigation = useNavigation<NavigationProp<{ allbadges: undefined }>>();
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false); // State voor uitklappen/inklappen
 
   return (
     <View className="flex-1 bg-gray-900 pt-10">

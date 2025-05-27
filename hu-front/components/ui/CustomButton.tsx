@@ -1,5 +1,5 @@
-import { TouchableOpacity, Text, Image } from "react-native";
-import React from "react";
+import { TouchableOpacity, Text, Image, View } from "react-native";
+import React, { useState } from "react";
 
 type CustomButtonProps = {
   title: string;
@@ -9,6 +9,7 @@ type CustomButtonProps = {
   isLoading?: boolean;
   icon?: any;
   backgroundColor?: string;
+  shadow?: boolean;
 };
 
 const CustomButton = ({
@@ -19,23 +20,36 @@ const CustomButton = ({
   isLoading,
   icon,
   backgroundColor,
+  shadow = false,
 }: CustomButtonProps) => {
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
-    <TouchableOpacity
-      onPress={handlePress}
-      activeOpacity={0.7}
-      className={`min-h[62px] flex-row items-center justify-center rounded-full bg-[#EE5B39] ${containerStyles} ${
-        isLoading ? "opacity-50" : ""
-      }`}
-      disabled={isLoading}
-    >
-      {icon && (
-        <Image source={icon} className="absolute left-6 h-[25] w-[25]" />
+    <View className="w-full relative bg-transparent">
+      {shadow && (
+        <View className="absolute bg-[#FFFFFF66] rounded-2xl h-full top-5 w-full"></View>
       )}
-      <Text className={`font-pregular text-lg text-primary ${textStyles}`}>
-        {title}
-      </Text>
-    </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handlePress}
+        onPressIn={() => setIsPressed(true)}
+        onPressOut={() => setIsPressed(false)}
+        activeOpacity={0.9}
+        className={`min-h-[50px] flex-row items-center justify-center rounded-full bg-[#F6F6F6] ${containerStyles} ${
+          isLoading ? "opacity-50" : ""
+        }`}
+        style={{
+          top: isPressed && shadow ? 6 : 0,
+        }}
+        disabled={isLoading}
+      >
+        {icon && (
+          <Image source={icon} className="absolute left-6 h-[25] w-[25]" />
+        )}
+        <Text className={`font-pregular text-lg text-primary ${textStyles}`}>
+          {title}
+        </Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

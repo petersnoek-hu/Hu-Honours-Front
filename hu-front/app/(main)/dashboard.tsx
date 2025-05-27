@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import Level from "../../components/dashboard/Level";
 import Divider from "../../components/dashboard/Divider";
@@ -8,6 +8,15 @@ import { roadmap } from "../_constants/roadmap";
 
 const Dashboard = () => {
   const scrollRef = useRef<ScrollView>(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    if (!hasScrolled && scrollRef.current) {
+      scrollRef.current.scrollToEnd({ animated: false });
+      setHasScrolled(true);
+    }
+  }, [hasScrolled]);
+
   return (
     <SafeAreaView className="flex-1 bg-[#2B2B2B]">
       <Achievements streak={5} badges={1} />
@@ -16,13 +25,10 @@ const Dashboard = () => {
         ref={scrollRef}
         className="flex-1 p-4"
         contentContainerClassName="flex-col-reverse"
-        onContentSizeChange={() => {
-          scrollRef.current?.scrollToEnd({ animated: false });
-        }}
       >
         {roadmap.map((item, index) => {
           if (item.type === "level") {
-            const isActive = index < 3 || index === 4 || index === 5 ;
+            const isActive = true;
             return (
               <Level
                 key={index}
