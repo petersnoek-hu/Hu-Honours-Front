@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
 import ProgressBar from "./ProgressBar";
-import CustomButton from "./CustomButton";
 import IconButton from "./IconButton";
 
 type LevelHeaderProps = {
@@ -29,10 +28,10 @@ const LevelHeader = ({
           handlePress={handleBackPress}
         />
         <View className="flex-1 items-center -ml-6">
-          <Text className="color-gray-100 font-bold text-4xl">
-            {levelName}
+          <Text className="color-gray-100 font-bold text-4xl">{levelName}</Text>
+          <Text className="color-gray-300 font-medium text-base">
+            {levelDescription}
           </Text>
-          <Text className="color-gray-300 font-medium text-base">{levelDescription}</Text>
         </View>
         <View style={{ width: 24 }} />
       </View>
