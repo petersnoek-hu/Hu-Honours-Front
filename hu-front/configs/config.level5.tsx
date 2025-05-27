@@ -106,7 +106,7 @@ const CompletionStep = () => (
   </View>
 );
 
-export default function level4Config(
+export default function level5Config(
   features?: Partial<LevelFeatures>
 ): LevelConfig {
   const checklistFeature = {

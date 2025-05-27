@@ -1,8 +1,10 @@
+// Defenitie van de structuur van een level stap
 export interface LevelStep {
   id: number;
   component: React.ReactElement;
 }
 
+// Defenitie van features die door een level gebruikt kunnen worden
 export interface LevelFeatures {
   checklist?: {
     items: string[];
@@ -12,13 +14,16 @@ export interface LevelFeatures {
   inputFields?: {
     fields: React.ReactElement[];
     setFields: (fields: React.ReactElement[]) => void;
+    values: string[]; // Toegevoegd
+    setValues: (values: string[]) => void; // Toegevoegd
   };
+  // Andere features
 }
 
+// Hoofdstructuur van een level
 export interface LevelConfig {
   levelName: string;
   levelDescription: string;
   steps: LevelStep[];
-  color: string;
   features?: LevelFeatures;
 }

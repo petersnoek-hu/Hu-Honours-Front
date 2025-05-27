@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { LevelConfig, LevelFeatures } from "@/types/level.types";
 import LottieView from "lottie-react-native";
@@ -22,12 +22,10 @@ const InputFieldStep = ({
 
     const newIndex = inputFields.fields.length;
 
-    // Update de waarden eerst
     const newValues = [...inputFields.values];
-    newValues[newIndex] = ""; // Voeg een lege string toe voor het nieuwe veld
+    newValues[newIndex] = "";
     inputFields.setValues(newValues);
 
-    // Dan de velden bijwerken
     const newFields = [
       ...inputFields.fields,
       <InputField
@@ -47,24 +45,56 @@ const InputFieldStep = ({
 
   return (
     <View className="flex-1 my-5">
-      <LevelHero level={3} color="bg-orange" />
+      <LevelHero level={8} hexColor="#E6302B" />
       <View className="w-full justify-center items-center mb-4">
-        <Text className="text-white text-xl">
-          Welke drie punten uit het hoofdstuk spreken je het meeste aan?
+        <Text className="text-white text-lg">
+          Voor de volgende opdracht ga je na denken over een ontmoeting met een
+          persoon die veel indruk op je heeft gemaakt.
+        </Text>
+        <Text className="text-white text-lg mt-5">
+          Wat maakte deze ontmoeting zo betekenisvol?
+        </Text>
+        <Text className="text-white text-lg mt-5">
+          Welke principes, kwaliteiten, eigenschappen zie je bij deze
+          persoon/personen schrijf dat hier op
         </Text>
       </View>
-      <View className="w-full">
+      <View className="w-full justify-center items-center">
         {inputFields?.fields &&
           inputFields.fields.map((item, index) => (
-            <View key={index} className="mb-4">
+            <View key={index} className="mb-4 w-full">
               {item}
             </View>
           ))}
         <IconButton
           handlePress={addInputField}
-          icon={require("@/assets/images/book.png")}
+          icon={require("@/assets/images/plus-white.png")}
         />
       </View>
+    </View>
+  );
+};
+
+const DescriptionStep = () => {
+  // Add state to track the input value
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <View className="my-5">
+      <Text className="text-lg text-white">
+        Zoek iemand in je professionele context en iemand in je persoonlijke
+        omgeving die je om een bepaalde redenen bewondert.
+      </Text>
+      <Text className="text-lg text-white mt-5">
+        Breng deze persoon in kaart op drie niveaus: wat zijn de overtuigingen,
+        kwaliteiten en het concrete gedrag van deze persoon
+      </Text>
+      <InputField
+        fullHeight
+        placeholder="Vul hier de overtuigingen in"
+        value={inputValue}
+        onChangeText={setInputValue}
+      />
     </View>
   );
 };
@@ -84,21 +114,21 @@ const CompletionStep = () => (
       />
     </View>
     <Text className="text-white text-3xl font-bold mb-3">
-      Cirkel van betrokkenheid
+      Betekenisvolle ontmoetingen
     </Text>
     <Text className="text-white">
-      Je hebt level 3 afgerond en begrijpt nu beter hoe de cirkel van
-      betrokkenheid werkt.
+      Je hebt level 8 afgerond en hebt nagedacht over wat jou inspireert in
+      anderen.
     </Text>
   </View>
 );
 
-export default function level3Config(
+export default function level8Config(
   features?: Partial<LevelFeatures>
 ): LevelConfig {
   return {
-    levelName: "Cirkel van betrokkenheid",
-    levelDescription: "Level 3: De cirkel van betrokkenheid",
+    levelName: "Challenge 2",
+    levelDescription: "Level 8: Betekenisvolle ontmoetingen",
     features: {
       inputFields: features?.inputFields,
     },
@@ -107,8 +137,9 @@ export default function level3Config(
         id: 1,
         component: <InputFieldStep inputFields={features?.inputFields} />,
       },
+      { id: 2, component: <DescriptionStep /> },
       {
-        id: 2,
+        id: 3,
         component: <CompletionStep />,
       },
     ],

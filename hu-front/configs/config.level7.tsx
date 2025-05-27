@@ -47,22 +47,28 @@ const InputFieldStep = ({
 
   return (
     <View className="flex-1 my-5">
-      <LevelHero level={3} color="bg-orange" />
+      <LevelHero level={7} hexColor="#E6302B" />
       <View className="w-full justify-center items-center mb-4">
         <Text className="text-white text-xl">
-          Welke drie punten uit het hoofdstuk spreken je het meeste aan?
+          Voor de volgende opdracht word jij een meester in het uitleggen van de
+          inleiding en van het boek en de aspecten van gewoonte 1 wees pro
+          actief!
+        </Text>
+        <Text className="text-white text-xl mt-5">
+          Doe alsof je je het uitlegt aan iemand die nog nooit de cursus heeft
+          gedaan door middel van een voorbeeld uit je eigen leven
         </Text>
       </View>
-      <View className="w-full">
+      <View className="w-full justify-center items-center">
         {inputFields?.fields &&
           inputFields.fields.map((item, index) => (
-            <View key={index} className="mb-4">
+            <View key={index} className="mb-4 w-full">
               {item}
             </View>
           ))}
         <IconButton
           handlePress={addInputField}
-          icon={require("@/assets/images/book.png")}
+          icon={require("@/assets/images/plus-white.png")}
         />
       </View>
     </View>
@@ -93,12 +99,12 @@ const CompletionStep = () => (
   </View>
 );
 
-export default function level3Config(
+export default function level7Config(
   features?: Partial<LevelFeatures>
 ): LevelConfig {
   return {
     levelName: "Cirkel van betrokkenheid",
-    levelDescription: "Level 3: De cirkel van betrokkenheid",
+    levelDescription: "Level 7: De cirkel van betrokkenheid",
     features: {
       inputFields: features?.inputFields,
     },

@@ -1,11 +1,20 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const LevelHero = () => {
+type LevelHeroProps = {
+  level: number;
+  color?: string;
+  hexColor?: string;
+};
+
+const LevelHero = ({ level, color, hexColor }: LevelHeroProps) => {
   return (
-    <View className="bg-orange p-5 rounded-2xl mb-5">
+    <View
+      className={`${color} p-5 rounded-3xl mb-5`}
+      style={hexColor ? { backgroundColor: hexColor } : undefined}
+    >
       <Text className="text-white text-xl font-bold">
-        Lees hoofdstuk 1 uit het boek van Covey
+        Lees hoofdstuk {level} uit het boek van Covey
       </Text>
     </View>
   );

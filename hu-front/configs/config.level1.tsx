@@ -62,7 +62,6 @@ const CompletionStep = () => (
 export default function level1Config(
   features?: Partial<LevelFeatures>
 ): LevelConfig {
-  // Ensure checklist features are provided with default values
   const checklistFeature = {
     items: [
       "Paradigma's en principes",
@@ -77,7 +76,6 @@ export default function level1Config(
   return {
     levelName: "Inleiding",
     levelDescription: "Level 1: Eerste stappen",
-    color: "bg-orange",
     features: {
       checklist: checklistFeature,
     },

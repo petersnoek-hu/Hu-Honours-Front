@@ -20,7 +20,7 @@ const LevelHeader = ({
   progressionColor = "bg-orange",
 }: LevelHeaderProps) => {
   return (
-    <View className="px-4 pt-4 my-5">
+    <View className="px-4 pt-4 my-2">
       <View className="flex-row items-center justify-between">
         <IconButton
           icon={require("../../assets/images/arrow-left.png")}
