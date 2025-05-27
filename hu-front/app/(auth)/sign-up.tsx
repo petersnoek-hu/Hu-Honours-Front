@@ -87,12 +87,12 @@ export default function Aanmelden() {
         </View>
 
         <TouchableOpacity className="p-4 bg-blue rounded-lg items-center" onPress={handleRegister}>
-          <Text className="text-lg color-gray-100 font-bold">Inloggen</Text>
+          <Text className="text-lg color-gray-100 font-bold">Aanmelden</Text>
         </TouchableOpacity>
 
         <Text className="text-lg font-medium color-gray-100 mt-8 text-center">
           Al een account? 
-          <Link className="underline" href="/(auth)/sign-up"> Inloggen</Link>
+          <Link className="underline" href="/(auth)/sign-in"> Inloggen</Link>
         </Text>
       </View>
     </SafeAreaView>
