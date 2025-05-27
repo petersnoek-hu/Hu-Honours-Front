@@ -76,7 +76,7 @@ const BaseLevel = ({ config }: BaseLevelProps) => {
             <View
               className="absolute bottom-0 left-0 right-0 bg-[#333333] px-5"
               style={{
-                paddingBottom: Platform.OS === "ios" ? 20 : 10,
+                paddingBottom: Platform.OS === "ios" ? 20 : 50,
                 paddingTop: 10,
               }}
             >

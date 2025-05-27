@@ -22,7 +22,7 @@ const DescriptionStep = () => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <View className="flex-1 bg-orange">
+    <View className="flex-1">
       <Text className="text-white text-lg">
         welke relatie zie je tussen de eerste drie gewoontes van covey en de
         vier dimenties uit gewoonte 7 (lichamelijk, mentaal, spiritueel,

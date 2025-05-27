@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          50:"#D6EFFA",
+          50: "#D6EFFA",
           100: "#C8EAF8",
           200: "#9BD8F3",
           300: "#6DC7EE",
@@ -16,7 +16,7 @@ module.exports = {
           700: "#0F5D80",
           800: "#0A3C52",
           900: "#072837",
-        },        
+        },
         secondary: {
           50: "#FCE4E4",
           100: "#F8C5C4",
@@ -28,7 +28,7 @@ module.exports = {
           700: "#9B1612",
           800: "#6D0F0D",
           900: "#400908",
-        },       
+        },
         gray: {
           50: "#FFFFFF",
           100: "#F6F6F6",
@@ -75,9 +75,6 @@ module.exports = {
         },
         green: {
           DEFAULT: "#6CCB2A",
-        gray: {
-          100: "#F6F6F6",
-          900: "#333333",
         },
       },
       fontFamily: {

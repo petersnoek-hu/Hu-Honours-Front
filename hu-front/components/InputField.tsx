@@ -1,23 +1,39 @@
 import React from "react";
-import { TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View } from "react-native";
 
 type InputFieldProps = {
-    placeholder: string ;
-    value?: string ;
-    secureTextEntry?: boolean ;
-    onChangeText?: (text: string) => void ;
-}
+  placeholder?: string;
+  value: string;
+  secureTextEntry?: boolean;
+  fullHeight?: boolean;
+  onChangeText?: (text: string) => void;
+};
 
-export default function InputField({placeholder, value, secureTextEntry, onChangeText}:InputFieldProps){
-    return(
-        <View>
-            <TextInput className="border-2 border-gray-600 rounded-lg px-[16px] py-[12px] color-gray-100 font-medium"
-             placeholder={placeholder}
-             value={value}
-             secureTextEntry={secureTextEntry}
-             onChangeText={onChangeText}
-             placeholderTextColor="#B1B2B5"
-            />
-        </View>
-    )
-}
+const InputField = ({
+  placeholder = "Enter text...",
+  value,
+  secureTextEntry,
+  fullHeight = false,
+  onChangeText,
+}: InputFieldProps) => {
+  return (
+    <View className={`${fullHeight ? "h-[200px]" : "h-[60px]"} my-2`}>
+      <TextInput
+        className="border-2 border-[#4D4D4D] rounded-lg p-4 h-full text-white"
+        placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
+        placeholderTextColor="#E4E4E4"
+        multiline={fullHeight}
+        textAlignVertical={fullHeight ? "top" : "center"}
+        numberOfLines={fullHeight ? 10 : 1}
+        style={{
+          textAlignVertical: fullHeight ? "top" : "center",
+        }}
+      />
+    </View>
+  );
+};
+
+export default InputField;

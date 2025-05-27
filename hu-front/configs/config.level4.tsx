@@ -7,7 +7,6 @@ import UploadFile from "@/components/svgs/UploadFileSvg";
 import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
 import Checklist from "@/components/ui/Checklist";
 import LottieView from "lottie-react-native";
-import { createLevel } from "./createLevel";
 
 const animation = require("../assets/lottie/badge-animation.json");
 
