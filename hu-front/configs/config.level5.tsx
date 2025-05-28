@@ -1,91 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { LevelConfig, LevelFeatures } from "@/types/level.types";
-import LevelSvg from "@/components/svgs/LevelSvg";
-import LevelSvg2 from "@/components/svgs/LevelSvg2";
-import UploadFile from "@/components/svgs/UploadFileSvg";
-import UploadFileSvg2 from "@/components/svgs/UploadFileSvg2";
-import Checklist from "@/components/ui/Checklist";
+import InputField from "@/components/InputField";
+import MultipleChoice from "@/components/ui/MultipleChoice";
 import LottieView from "lottie-react-native";
 
 const animation = require("../assets/lottie/badge-animation.json");
 
-const IntroStep = () => (
-  <View className="bg-orange items-center rounded-3xl p-5 w-full gap-y-5 flex-col">
-    <View className="w-full justify-center items-center">
-      <Text className="color-white font-bold text-3xl">Level 4</Text>
-      <Text className="color-white">Lees deze korte uitleg</Text>
-    </View>
-
-    <View className="w-full">
-      <Text className="color-white w-1/2 text-lg">
-        De cirkel van betrokkenheid bevat alles waar jij je mee bezighoudt,
-        zoals werk, studie, nieuws of sociale situaties.
-      </Text>
-    </View>
-
-    <View className="flex-row justify-between w-full items-center">
-      <LevelSvg />
-      <Text className="color-white w-1/2 text-lg">
-        De cirkel van invloed bevat de dingen waar je écht invloed op hebt,
-        zoals je gedrag, reacties en keuzes.
-      </Text>
-    </View>
-
-    <View className="w-full justify-center items-center">
-      <Text className="color-white text-lg">
-        "Succesvolle mensen focussen zich op hun cirkel van invloed en
-        verspillen minder energie aan dingen waar ze geen controle over hebben."
-      </Text>
-    </View>
+const ExplanationStep = () => (
+  <View className="w-full">
+    <Text className="color-gray-100 font-bold text-3xl">Proactief taalgebruik</Text>
+    <Text className="color-gray-100 font-medium text-lg mt-4 ">
+      Proactieve mensen nemen initiatief en proberen gebeurtenissen te beïnvloeden
+      door zich te richten op eigen gedrag en gedachten waar ze invloed op hebben.
+    </Text>
+    <Text className="color-gray-100 text-lg">
+      Een voorbeeld van proactief taalgebruik is:
+    </Text>
+    <Text className="w-full p-8 bg-orange text-lg font-bold text-xl font-semibold rounded-lg mt-8 color-gray-100">
+      "Ik zal een oplossing vinden."
+    </Text>
   </View>
 );
 
-const ChallengeStep = ({
-  checklist,
+const ReactiveExplanationStep = () => (
+  <View className="w-full">
+    <Text className="color-white font-bold text-3xl">Reactief taalgebruik</Text>
+    <Text className="color-gray-100 text-lg mt-4 font-dmsans">
+      Daarentegen laten reactieve mensen zich sterk beïnvloeden door hun omgeving en door anderen.
+    </Text>
+    <Text className="color-gray-100 font-medium text-lg mt-4">Een voorbeeld van reactief taalgebruik is:</Text>
+    <Text className="w-full p-8 bg-orange text-lg font-bold text-xl font-semibold rounded-lg mt-8 color-gray-100">
+      "Ik kan hier niets aan doen."
+    </Text>
+    <Text className="color-gray-100 text-lg font-bold mt-4">
+      Let voor dit level minstens één dag actief op je taalgebruik.
+    </Text>
+  </View>
+);
+
+const TextInputStep = ({
+  texts,
+  handleText,
+  type,
 }: {
-  checklist?: LevelFeatures["checklist"];
+  texts: string[];
+  handleText: (index: number, value: string) => void;
+  type: "proactive" | "reactive";
 }) => (
-  <View className="bg-[#EE5B39] rounded-3xl px-5 pt-32 w-full">
-    <View className="absolute -top-4 -right-4 z-10">
-      <LevelSvg2 />
-    </View>
-    <View className="w-full space-y-4">
-      <Text className="text-3xl font-bold text-white">Uitdaging 1</Text>
-      {checklist && (
-        <Checklist
-          items={[
-            "1. Teken twee cirkels op een vel papier",
-            "2. Schrijf tijdens de dag steekwoorden op in de juiste cirkel",
-          ]}
-          checkedItems={checklist.checkedItems}
-          onCheck={checklist.handleCheck}
-          checkedColor="bg-orange"
-        />
-      )}
-    </View>
+  <View className="gap-y-6">
+    <Text className="color-white font-bold text-3xl">
+      Schrijf drie voorbeelden van {type === "proactive" ? "proactief" : "reactief"} taalgebruik
+    </Text>
+    <Text className="color-white text-lg">
+      Zet deze in volgorde van meest tot minst gebruikt.
+    </Text>
+    {texts.map((value, i) => (
+      <InputField
+        key={i}
+        placeholder={`Voorbeeld ${i + 1}`}
+        value={value}
+        onChangeText={(val) => handleText(i, val)}
+      />
+    ))}
   </View>
 );
 
-const UploadStep = () => (
-  <View className="flex-1">
-    <View className="flex-row bg-[#EE5B39] h-[200] justify-around items-center p-5 mb-5 rounded-3xl">
-      <View className="flex h-full justify-center">
-        <Text className="text-3xl font-bold color-white pb-2">Upload</Text>
-        <Text className="color-white w-3/4 pt-2">
-          Upload een foto van jouw cirkel
-        </Text>
-      </View>
-      <View>
-        <UploadFile />
-      </View>
+const MultipleChoiceStep = ({
+  answers,
+  handleAnswer,
+  type,
+}: {
+  answers: boolean[];
+  handleAnswer: (index: number) => void;
+  type: "proactive" | "reactive";
+}) => {
+  const items =
+    type === "proactive"
+      ? [
+          "Wanneer ik verantwoordelijkheid wilde tonen",
+          "Wanneer ik een probleem wilde oplossen",
+          "Wanneer ik een doel wilde stellen voor mijzelf",
+        ]
+      : [
+          "Wanneer ik instructies van iemand kreeg",
+          "Wanneer ik iets wilde vermijden",
+          "Wanneer er geen andere opties meer waren",
+        ];
+
+  return (
+    <View className="gap-y-6">
+      <Text className="color-white font-bold text-3xl">
+        Wanneer heb je het gebruikt?
+      </Text>
+      <Text className="color-white text-lg">
+        Kies de situaties waarin jij het vaakst {type === "proactive" ? "proactief" : "reactief"} taalgebruik toepaste.
+      </Text>
+      <MultipleChoice
+        items={items}
+        selected={answers}
+        onSelect={handleAnswer}
+        selectedColor="bg-orange"
+        selectedTextColor="color-gray-100"
+      />
     </View>
-    <View className="flex h-[200] justify-center items-center bg-[#464646] mt-5 rounded-3xl border-dashed border-white border-2">
-      <UploadFileSvg2 />
-      <Text className="text-white mt-5">Upload hier</Text>
-    </View>
-  </View>
-);
+  );
+};
 
 const CompletionStep = () => (
   <View className="flex-1 h-full justify-center items-center">
@@ -101,44 +121,81 @@ const CompletionStep = () => (
         }}
       />
     </View>
-    <Text className="text-white text-3xl font-bold mb-3">Lekker bezig!</Text>
+    <Text className="text-white text-3xl font-bold mb-3">Goed gedaan!</Text>
     <Text className="text-white">Klaar voor het volgende level?</Text>
   </View>
 );
 
-export default function level5Config(
-  features?: Partial<LevelFeatures>
-): LevelConfig {
-  const checklistFeature = {
-    items: [
-      "1. Teken twee cirkels op een vel papier",
-      "2. Schrijf tijdens de dag steekwoorden op in de juiste cirkel",
-    ],
-    checkedItems: features?.checklist?.checkedItems || [],
-    handleCheck: features?.checklist?.handleCheck || (() => {}),
+export default function level5Config(): LevelConfig {
+  const [proactiveText, setProactiveText] = useState(["", "", ""]);
+  const [reactiveText, setReactiveText] = useState(["", "", ""]);
+  const [proactiveAnswer, setProactiveAnswer] = useState([false, false, false]);
+  const [reactiveAnswer, setReactiveAnswer] = useState([false, false, false]);
+
+  const handleText = (type: "proactive" | "reactive") => (index: number, value: string) => {
+    if (type === "proactive") {
+      setProactiveText((prev) => prev.map((val, i) => (i === index ? value : val)));
+    } else {
+      setReactiveText((prev) => prev.map((val, i) => (i === index ? value : val)));
+    }
+  };
+
+  const handleAnswer = (type: "proactive" | "reactive") => (index: number) => {
+    if (type === "proactive") {
+      setProactiveAnswer((prev) => prev.map((val, i) => (i === index ? !val : val)));
+    } else {
+      setReactiveAnswer((prev) => prev.map((val, i) => (i === index ? !val : val)));
+    }
   };
 
   return {
     levelName: "Challenge 1",
-    levelDescription: "Level 4",
-    features: {
-      checklist: checklistFeature,
-    },
+    levelDescription: "Level 5: Proactieve vs. reactieve taal",
     steps: [
-      {
-        id: 1,
-        component: <IntroStep />,
-      },
-      {
-        id: 2,
-        component: <ChallengeStep checklist={checklistFeature} />,
-      },
+      { id: 1, component: <ExplanationStep /> },
+      { id: 2, component: <ReactiveExplanationStep /> },
       {
         id: 3,
-        component: <UploadStep />,
+        component: (
+          <TextInputStep
+            texts={proactiveText}
+            handleText={handleText("proactive")}
+            type="proactive"
+          />
+        ),
       },
       {
         id: 4,
+        component: (
+          <TextInputStep
+            texts={reactiveText}
+            handleText={handleText("reactive")}
+            type="reactive"
+          />
+        ),
+      },
+      {
+        id: 5,
+        component: (
+          <MultipleChoiceStep
+            answers={proactiveAnswer}
+            handleAnswer={handleAnswer("proactive")}
+            type="proactive"
+          />
+        ),
+      },
+      {
+        id: 6,
+        component: (
+          <MultipleChoiceStep
+            answers={reactiveAnswer}
+            handleAnswer={handleAnswer("reactive")}
+            type="reactive"
+          />
+        ),
+      },
+      {
+        id: 7,
         component: <CompletionStep />,
       },
     ],

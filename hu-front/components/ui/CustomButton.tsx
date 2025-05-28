@@ -45,7 +45,7 @@ const CustomButton = ({
         {icon && (
           <Image source={icon} className="absolute left-6 h-[25] w-[25]" />
         )}
-        <Text className={`font-pregular text-lg text-primary ${textStyles}`}>
+        <Text className={`font-bold text-lg text-primary ${textStyles}`}>
           {title}
         </Text>
       </TouchableOpacity>

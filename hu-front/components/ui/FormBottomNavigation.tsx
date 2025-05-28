@@ -26,7 +26,7 @@ const FormBottomNavigation = ({ back, next, isLastStep, buttonColor }: Props) =>
           <CustomButton
             title={isLastStep ? "Voltooien" : "Volgende"}
             handlePress={next}
-            textStyles="text-black"
+            textStyles="color-gray-900"
             containerStyles="h-[40px] rounded-xl"
             backgroundColor={buttonColor}
             shadow={true}
