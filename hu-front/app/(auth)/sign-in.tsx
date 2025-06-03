@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import InputField from "@/components/InputField";
+import { AxiosError } from "axios";
 
 import axiosClient from "@/axiosClient";
 import useAuthStore from "@/AuthStore";
@@ -49,17 +50,26 @@ export default function Inloggen() {
           }
           console.log(response.data);
         });
-    } catch (error) {}
+    } catch (error) {
+      const err = error as AxiosError;
+
+        if (err.response && err.response.status === 401) {
+          Alert.alert("Fout", "Onjuiste e-mail of wachtwoord");
+        } else {
+          Alert.alert("Fout", "Er is iets misgegaan. Probeer het opnieuw.");
+        }
+      console.log("Login error:", error);
+    }
   };
 
   return (
     <SafeAreaView className="flex-1 bg-gray-900">
-      <View className="flex-1 px-6 py-18">
-        <Image className="w-full h-30 justify-center"
+      <View className="flex-1 px-6 py-24">
+        <Image className="w-full h-16 justify-center"
           source={require("@/assets/images/hu-honours-logo.png")}
         />
         <Text className="text-4xl font-bold color-gray-100 mt-16 mb-2">Inloggen</Text>
-        <Text className="text-lg font-medium color-gray-100">Log hier in met je account</Text>
+        <Text className="text-lg font-medium color-gray-100 mb-8">Log hier in met je account</Text>
 
         <View className="mb-24">
           <InputField
