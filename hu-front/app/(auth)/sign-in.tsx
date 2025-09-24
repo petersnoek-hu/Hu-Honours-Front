@@ -26,6 +26,13 @@ export default function Inloggen() {
       return;
     }
 
+    // Local admin bypass: do not contact remote API when using admin/admin
+    if (email === "admin" && password === "admin") {
+      setToken("local-admin-token");
+      router.push("/(main)/dashboard");
+      return;
+    }
+
     try {
       await axiosClient
         .post(
