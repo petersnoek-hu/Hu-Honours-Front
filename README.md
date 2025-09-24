@@ -29,8 +29,11 @@ Hier is een overzicht van de belangrijkste mappen en bestanden in deze repositor
 
 1. **Repo clonen**  
    ```sh
-   git clone https://github.com/jouw-gebruikersnaam/hu-front.git
+   git clone [https://github.com/jouw-gebruikersnaam/hu-front.git](https://github.com/petersnoek-hu/Hu-Honours-Front.git)
    cd hu-front
+2. **Switch to development branch**
+   git branch development
+   git push --set-upstream origin development
 2. **Dependencies instaleren**  
    ```sh
    npm install
