@@ -30,9 +30,19 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
-      router.replace("/(auth)/sign-in");
     }
   }, [loaded]);
+
+  useEffect(() => {
+    if (loaded) {
+      // Use setTimeout to ensure navigation happens after the Stack is mounted
+      const timer = setTimeout(() => {
+        router.replace("/(auth)/sign-in");
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [loaded, router]);
 
   if (!loaded) {
     return null;
