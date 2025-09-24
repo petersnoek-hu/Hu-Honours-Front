@@ -27,7 +27,7 @@ export default function Inloggen() {
     }
 
     // Local admin bypass: do not contact remote API when using admin/admin
-    if (email === "admin" && password === "admin") {
+    if (email.toLowerCase() === "admin" && password.toLowerCase() === "admin") {
       setToken("local-admin-token");
       router.push("/(main)/dashboard");
       return;

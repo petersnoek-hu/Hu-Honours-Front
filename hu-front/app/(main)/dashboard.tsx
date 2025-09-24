@@ -1,8 +1,16 @@
 import { router } from "expo-router";
 import React from "react";
 import { View, Text, Button } from "react-native";
+import useAuthStore from "@/AuthStore";
 
 const Dashboard = () => {
+  const { setToken } = useAuthStore();
+
+  const handleLogout = () => {
+    setToken(null);
+    router.replace("/(auth)/sign-in");
+  };
+
   return (
     <View
       style={{
@@ -35,6 +43,8 @@ const Dashboard = () => {
           router.push("/levels/level4");
         }}
       />
+      <View style={{ height: 16 }} />
+      <Button title="Log out" color="#ef4444" onPress={handleLogout} />
     </View>
   );
 };
